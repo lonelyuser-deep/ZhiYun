@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <section class="entrance-screen" id="entranceScreen" aria-labelledby="entranceTitle">
+    <div class="entrance-scrim"></div>
+    <div class="entrance-content">
+      <p class="entrance-eyebrow">ZH I Y U N · CAMPUS</p>
+      <h1 id="entranceTitle">智云校遇</h1>
+      <p>在校园里，遇见值得投入的每一次机会。</p>
+      <button class="entrance-button" id="enterSite" type="button">
+        <span>进入校园</span>
+        <small>CLICK TO EXPLORE</small>
+      </button>
+    </div>
+  </section>
   <div class="app-shell">
     <aside class="sidebar">
       <button class="brand" data-view="discover" aria-label="返回发现页"><span class="brand-mark">智</span><span>智云校遇</span></button>
@@ -28,7 +40,7 @@
       </section>
     </aside>
 
-    <main class="content-panel">
+    <main class="content-panel" tabindex="-1">
       <header class="mobile-header"><button class="brand" data-view="discover"><span class="brand-mark">智</span><span>智云校遇</span></button><button class="mobile-account" id="mobileAccount">访</button></header>
       <section class="view is-active" id="discoverView">
         <div class="page-hero">
