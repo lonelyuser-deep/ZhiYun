@@ -1,0 +1,11 @@
+# Local previews and editor-specific settings
+.docx-analysis-preview/
+.vscode/
+.idea/
+
+# Source material is retained locally and is not part of the web application
+*.docx
+
+# Operating-system files
+.DS_Store
+Thumbs.db
