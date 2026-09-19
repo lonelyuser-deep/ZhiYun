@@ -1,147 +1,82 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1d7561" />
-    <title>智云校遇 - 校园活动与机会</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <button class="brand" data-view="discover" aria-label="返回首页">
-          <span class="brand-mark">智</span>
-          <span>智云校遇</span>
-        </button>
-        <button class="user-trigger" id="userTrigger" aria-label="打开我的页面">
-          <span class="user-avatar" id="headerAvatar">访</span>
-          <span id="headerUserName">访客</span>
-        </button>
-      </header>
-
-      <main>
-        <section class="view is-active" id="discoverView" aria-labelledby="discoverTitle">
-          <div class="hero">
-            <p class="eyebrow">智云校遇 · Campus opportunities</p>
-            <h1 id="discoverTitle">找到值得参与的校园机会</h1>
-            <p>课程、比赛、招募与同学发起的活动，按时间、来源和状态清晰整理。</p>
-          </div>
-
-          <div class="search-panel">
-            <label class="search-field" for="searchInput">
-              <span aria-hidden="true">⌕</span>
-              <input id="searchInput" type="search" placeholder="搜索活动、组织或关键词" autocomplete="off" />
-            </label>
-            <div class="filter-row" id="categoryFilters" aria-label="按类型筛选"></div>
-            <div class="filter-row subtle" id="sourceFilters" aria-label="按来源筛选"></div>
-          </div>
-
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">为你整理</p>
-              <h2>活动与机会</h2>
-            </div>
-            <span class="result-count" id="resultCount"></span>
-          </div>
-          <div class="notice" id="insightNotice"></div>
-          <div class="card-grid" id="opportunityList"></div>
-          <div class="empty-state hidden" id="discoverEmpty">
-            <span>⌕</span>
-            <h3>没有找到匹配的信息</h3>
-            <p>换个关键词，或清除筛选条件试试。</p>
-            <button class="text-button" id="clearFilters">清除筛选</button>
-          </div>
-        </section>
-
-        <section class="view" id="publishView" aria-labelledby="publishTitle">
-          <div class="page-intro">
-            <p class="eyebrow">发布校园信息</p>
-            <h1 id="publishTitle">让合适的人看见你的邀请</h1>
-            <p>发布前请补全必要信息。你的内容会直接进入校园信息流，并标注为学生发起。</p>
-          </div>
-          <div class="binding-hint" id="publishBindingHint"></div>
-          <form class="publish-form" id="publishForm">
-            <div class="form-grid">
-              <label>
-                信息标题
-                <input name="title" maxlength="28" required placeholder="例如：周末羽毛球约球" />
-              </label>
-              <label>
-                类型
-                <select name="category" required>
-                  <option value="活动">活动</option>
-                  <option value="学习">学习</option>
-                  <option value="招募">招募</option>
-                  <option value="比赛">比赛</option>
-                </select>
-              </label>
-              <label>
-                时间
-                <input name="time" type="datetime-local" required />
-              </label>
-              <label>
-                地点
-                <input name="location" maxlength="32" required placeholder="例如：羽毛球馆 2 号场" />
-              </label>
-              <label>
-                人数或名额
-                <input name="capacity" maxlength="20" placeholder="例如：还差 3 人" />
-              </label>
-              <label>
-                联系方式
-                <input name="contact" maxlength="30" required placeholder="例如：在小程序内留言" />
-              </label>
-            </div>
-            <label>
-              详细说明
-              <textarea name="description" maxlength="180" required placeholder="写清活动内容、参与要求和需要大家提前确认的事项。"></textarea>
-            </label>
-            <p class="form-note">发布后会以“学生发起”呈现。请勿填写账号密码、身份证号等敏感信息。</p>
-            <button class="primary-button" type="submit">发布到信息流</button>
-          </form>
-        </section>
-
-        <section class="view" id="profileView" aria-labelledby="profileTitle">
-          <div class="page-intro">
-            <p class="eyebrow">我的校园清单</p>
-            <h1 id="profileTitle">把感兴趣的机会留在这里</h1>
-          </div>
-          <div id="profileContent"></div>
-        </section>
-      </main>
-
-      <nav class="bottom-nav" aria-label="主导航">
-        <button class="nav-item is-active" data-view="discover"><span>⌂</span>发现</button>
-        <button class="nav-item" data-view="publish"><span>＋</span>发布</button>
-        <button class="nav-item" data-view="profile"><span>◉</span>我的</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1d7561" />
+  <title>智云校遇 - 校园活动与机会</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button class="brand" data-view="discover" aria-label="返回发现页"><span class="brand-mark">智</span><span>智云校遇</span></button>
+      <p class="sidebar-kicker">校园机会导航</p>
+      <nav class="side-nav" aria-label="主要功能">
+        <button class="side-nav-item is-active" data-view="discover"><span>◫</span>发现信息</button>
+        <button class="side-nav-item" data-view="featured"><span>✦</span>实用精选</button>
+        <button class="side-nav-item" data-view="publish"><span>＋</span>发布信息</button>
       </nav>
-    </div>
+      <div class="sidebar-spacer"></div>
+      <button class="account-trigger" id="accountTrigger" aria-expanded="false">
+        <span class="account-avatar" id="headerAvatar">访</span>
+        <span class="account-copy"><strong id="headerUserName">访客</strong><small id="headerIdentity">点击绑定校园身份</small></span>
+        <span class="chevron">⌄</span>
+      </button>
+      <section class="account-drawer" id="accountDrawer" hidden>
+        <div id="drawerContent"></div>
+      </section>
+    </aside>
 
-    <dialog id="detailDialog" class="detail-dialog">
-      <button class="dialog-close" id="closeDetail" aria-label="关闭详情">×</button>
-      <div id="detailContent"></div>
-    </dialog>
+    <main class="content-panel">
+      <header class="mobile-header"><button class="brand" data-view="discover"><span class="brand-mark">智</span><span>智云校遇</span></button><button class="mobile-account" id="mobileAccount">访</button></header>
+      <section class="view is-active" id="discoverView">
+        <div class="page-hero">
+          <div><p class="eyebrow">Campus opportunities</p><h1>把值得参与的信息留在眼前</h1><p>用来源、状态与互动数据判断哪些活动真正值得投入时间。</p></div>
+          <div class="hero-metric"><strong id="usefulCount">0</strong><span>条高价值信息</span></div>
+        </div>
+        <div class="toolbar">
+          <label class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索活动、组织或关键词" /></label>
+          <div class="sort-group" aria-label="排序方式"><button class="sort-button is-selected" data-sort="smart">综合</button><button class="sort-button" data-sort="hot">热门</button><button class="sort-button" data-sort="useful">实用</button></div>
+        </div>
+        <div class="filter-row" id="categoryFilters"></div>
+        <div class="filter-row source-row" id="sourceFilters"></div>
+        <div class="section-heading"><div><p class="eyebrow">信息流</p><h2>校园活动与机会</h2></div><span id="resultCount"></span></div>
+        <div class="card-grid" id="opportunityList"></div>
+        <div class="empty-state hidden" id="discoverEmpty"><h3>暂未找到匹配信息</h3><p>换个关键词或筛选条件试试。</p><button class="text-button" id="clearFilters">清除筛选</button></div>
+      </section>
 
-    <dialog id="bindDialog" class="bind-dialog">
-      <button class="dialog-close" id="closeBind" aria-label="关闭绑定窗口">×</button>
-      <p class="eyebrow">模拟微信绑定</p>
-      <h2>先介绍一下自己</h2>
-      <p>当前网页版本使用昵称模拟微信身份绑定；迁移到小程序后可替换为微信授权流程。</p>
-      <form id="bindForm">
-        <label>
-          微信昵称
-          <input name="name" maxlength="12" required placeholder="例如：小林" />
-        </label>
-        <label>
-          学院或身份（选填）
-          <input name="identity" maxlength="18" placeholder="例如：计算机学院 · 2026级" />
-        </label>
-        <button class="primary-button" type="submit">完成绑定</button>
-      </form>
-    </dialog>
+      <section class="view" id="featuredView">
+        <div class="section-heading large"><div><p class="eyebrow">由互动数据筛选</p><h1>实用精选</h1><p>优先展示关注、点赞和浏览表现更好的信息；你也可以在详情中将重点内容置顶。</p></div></div>
+        <div class="featured-note">评分参考：点赞、关注、浏览、信息完整度与时效性。置顶信息始终优先显示。</div>
+        <div class="card-grid" id="featuredList"></div>
+      </section>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <script src="app.js"></script>
-  </body>
+      <section class="view" id="publishView">
+        <div class="section-heading large"><div><p class="eyebrow">发布校园信息</p><h1>让合适的人看到你的邀请</h1><p>发布后将进入信息流，并可由你在账号抽屉中管理。</p></div></div>
+        <div class="binding-hint" id="publishBindingHint"></div>
+        <form class="publish-form" id="publishForm">
+          <div class="form-grid">
+            <label>信息标题<input name="title" maxlength="28" required placeholder="例如：周末羽毛球约球" /></label>
+            <label>类型<select name="category"><option value="活动">活动</option><option value="学习">学习</option><option value="招募">招募</option><option value="比赛">比赛</option></select></label>
+            <label>时间<input name="time" type="datetime-local" required /></label>
+            <label>地点<input name="location" maxlength="32" required placeholder="例如：羽毛球馆 2 号场" /></label>
+            <label>人数或名额<input name="capacity" maxlength="20" placeholder="例如：还差 3 人" /></label>
+            <label>参与方式<input name="contact" maxlength="30" required placeholder="例如：在站内留言" /></label>
+          </div>
+          <label>详细说明<textarea name="description" maxlength="180" required placeholder="写清活动内容、参与要求和仍待确认的事项。"></textarea></label>
+          <p class="form-note">请勿填写账号密码、身份证号等敏感信息。</p>
+          <button class="primary-button" type="submit">发布到信息流</button>
+        </form>
+      </section>
+
+      <section class="view" id="profileView"><div id="profileContent"></div></section>
+    </main>
+  </div>
+
+  <dialog id="detailDialog" class="detail-dialog"><button class="dialog-close" id="closeDetail" aria-label="关闭">×</button><div id="detailContent"></div></dialog>
+  <dialog id="bindDialog" class="bind-dialog"><button class="dialog-close" id="closeBind" aria-label="关闭">×</button><p class="eyebrow">身份绑定</p><h2>介绍一下自己</h2><p>网页版本以昵称模拟身份；迁移小程序后可替换为微信授权。</p><form id="bindForm"><label>昵称<input name="name" maxlength="12" required placeholder="例如：小林" /></label><label>学院或身份（选填）<input name="identity" maxlength="18" placeholder="例如：计算机学院 · 2026级" /></label><button class="primary-button" type="submit">完成绑定</button></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
 </html>
