@@ -74,3 +74,25 @@ dialog { color: var(--ink); border: 0; border-radius: 18px; box-shadow: 0 24px 7
 .toast { position: fixed; z-index: 20; left: 50%; bottom: 91px; max-width: calc(100% - 34px); transform: translate(-50%, 16px); padding: 11px 14px; border-radius: 10px; color: white; background: #1e2d4d; font-size: 14px; opacity: 0; pointer-events: none; transition: .2s; }.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
 @media (max-width: 620px) { .topbar { height: 60px; padding: 0 18px; }.user-trigger #headerUserName { display: none; } main { padding: 21px 16px 90px; }.hero { padding: 29px 23px 43px; border-radius: 17px; }.hero h1, .page-intro h1 { font-size: 28px; }.search-panel { margin: -25px 4px 28px; }.card-grid, .form-grid { grid-template-columns: 1fr; }.opportunity-card { padding: 16px; }.publish-form { padding: 17px; }.hint-card { align-items: start; flex-direction: column; }.profile-card { align-items: flex-start; flex-wrap: wrap; }.profile-card .text-button { margin-left: 69px; }.detail-facts { grid-template-columns: 1fr; }.detail-dialog { padding: 25px 20px; } }
+
+/* 智云校遇 A 碧潭深绿主题 */
+:root { --ink:#17352d; --muted:#6b7d76; --line:#dce8e2; --canvas:#f3f7f5; --primary:#1d7561; --primary-soft:#e6f3ee; --green:#18745e; --orange:#9b691c; --red:#b44949; }
+body { background: radial-gradient(circle at 0 0, #e9f2ed 0, transparent 27rem), var(--canvas); }
+.app-shell { box-shadow: 0 0 52px rgba(30,77,61,.07); }
+.topbar { background: rgba(255,255,255,.92); backdrop-filter: blur(14px); }
+.brand-mark { width:31px; height:31px; background:linear-gradient(145deg,#123f37,#1d7561); box-shadow:0 6px 14px rgba(18,63,55,.20); }
+.user-avatar { background:#deeee7; }
+.hero { padding:43px 44px; background:radial-gradient(circle at 86% 18%,rgba(125,204,166,.38),transparent 23%),radial-gradient(circle at 74% 100%,rgba(0,0,0,.14),transparent 34%),linear-gradient(120deg,#123f37,#1d7561); }
+.hero p:last-child { color:#dcefe7; }.hero .eyebrow { color:#bfe1d3; }
+.search-panel { margin:-22px 18px 32px; box-shadow:0 13px 30px rgba(30,77,61,.10); }.search-field { background:#f5f8f6; }
+.filter-chip { border-color:#d7e4de; color:#587068; }.filter-chip.is-selected { border-color:#afd4c5; }
+.notice { border-color:#d3e5dc; background:#f3faf6; color:#42675a; }
+.opportunity-card { padding:20px; }.opportunity-card:hover { border-color:#afd4c5; box-shadow:0 12px 25px rgba(30,77,61,.09); }
+.tag { background:#eff4f1; color:#587168; }.tag.school { background:#e2f1e9; color:#17604e; }.tag.college { background:#e9f4f0; color:#287263; }.tag.student { background:#f8f0e5; color:#8b5d1e; }
+.publish-form { padding:26px; box-shadow:0 8px 24px rgba(30,77,61,.04); }
+label { color:#3f5b51; } input,select,textarea { border-color:#d8e5df; }.primary-button { box-shadow:0 6px 13px rgba(29,117,97,.20); }.primary-button:hover { background:#155b4c; }
+.profile-avatar { background:#e3f1ea; }.profile-empty { border-color:#c6ded3; }
+.bottom-nav { border-color:rgba(213,227,220,.94); box-shadow:0 12px 28px rgba(25,69,55,.16); }.nav-item { color:#70847c; }.nav-item.is-active { background:var(--primary-soft); }
+dialog { box-shadow:0 24px 70px rgba(18,63,55,.25); } dialog::backdrop { background:rgba(10,36,29,.5); }.dialog-close { color:#587168; background:#edf4f0; }.detail-dialog .description { color:#4a625a; }.fact { background:#f4f8f6; }.secondary-button { border-color:#c8ddd4; color:#386458; }
+.toast { background:#17352d; }
+@media (max-width:620px) { .hero { padding:29px 23px 43px; }.search-panel { margin:-25px 4px 28px; }.publish-form { padding:17px; } }
